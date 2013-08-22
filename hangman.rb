@@ -10,11 +10,9 @@ class Hangman
 		@word_placeholder = Array.new(word.length, '_')
 	end
 
-
   def play
 
       if @previous_choice.index(@userInput).nil? && !(@userInput.match(/^[[:alpha:]]+$/).nil?)
-
         @previous_choice.push(@userInput)
 
         if @userInput.length > 1
@@ -53,10 +51,10 @@ class Hangman
 
   def game_start
 
-    @userInput = gets.chomp
+    #@userInput = gets.chomp
 
     while @counter < @word.length && @missed_counter < 6 do
-
+    puts "Enter"
     end
 
   end

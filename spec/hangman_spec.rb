@@ -86,12 +86,16 @@ describe Hangman   do
   context "result" do
       context "win" do
         it "counter should be equal word length" do
+          #hangman.counter = 12
+          hangman.result
           #expect(hangman.counter).to eq(12)
         end
 
       end
       context "loss" do
         it "missed_counter should be equal 6" do
+          #hangman.missed_counter =  6
+          hangman.result
           #expect( hangman.missed_counter).to eq(6)
         end
       end
