@@ -12,11 +12,18 @@ describe Hangman   do
       expect(hangman.userInput.match(/^[[:alpha:]]+$/).nil? ).to eq(false)
     end
 
-    it "for correct choice" do
-      hangman.userInput = 'a'
+    it "for correct choice full word" do
+      hangman.userInput = 'elephantisi'
       hangman.play
-      hangman.counter.should_not == 0
+      hangman.counter.should == 12
     end
+
+    it "for correct choice single character" do
+      hangman.userInput = 'e'
+      hangman.play
+      #hangman.counter.should ==
+    end
+
 
   end
 
