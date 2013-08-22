@@ -32,6 +32,13 @@ describe Hangman   do
       (hangman.missed_counter - temp).should == 1
     end
 
+    it "for repeated characters" do
+      hangman.userInput = 'e'
+      temp = hangman.counter
+      hangman.play
+      (hangman.counter - temp).should == 2
+    end
+
 
   end
 
