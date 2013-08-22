@@ -12,38 +12,41 @@ describe Hangman   do
       expect(hangman.userInput.match(/^[[:alpha:]]+$/).nil? ).to eq(false)
     end
 
-    it "for correct choice full word" do
+    it "correct choice full word then win" do
       hangman.userInput = 'elephantisis'
       hangman.play
       hangman.counter.should == 12
     end
 
-    it "for correct choice single character" do
+    it "correct choice single character then update counter by 1" do
       hangman.userInput = 'h'
       temp = hangman.counter
       hangman.play
       (hangman.counter - temp).should == 1
     end
 
-    it "for wrong choice single character" do
+    it "wrong choice single character then update missed_counter by 1" do
       hangman.userInput = 'k'
       temp = hangman.missed_counter
       hangman.play
       (hangman.missed_counter - temp).should == 1
     end
 
-    it "for repeated characters" do
+    it "repeated characters count should be added to counter" do
       hangman.userInput = 'e'
       temp = hangman.counter
       hangman.play
       (hangman.counter - temp).should == 2
     end
 
+    it 'correct input alphabet should exist in word_placeholder' do
+      hangman.userInput = 'l'
+      hangman.play
+      hangman.word_placeholder.index('l').should > 0
+    end
 
   end
 
-  
-  it "should accept alphabet"
 
   context "#initialize" do
     it "counter should be 0" do

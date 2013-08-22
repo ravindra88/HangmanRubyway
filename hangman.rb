@@ -45,4 +45,13 @@ class Hangman
         puts "Loss"
       end
   end
+
+  def game_start
+
+    #while @counter <
+    #
+    #end
+
+  end
+
 end
