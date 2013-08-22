@@ -6,35 +6,40 @@ class Hangman
     @word = word
 		@counter = 0
 	  @missed_counter = 0
-  #	@game_word = word
     @previous_choice = []
 		@word_placeholder = Array.new(word.length, '_')
 	end
 
 
   def play
-    if userInput.length > 1
-       if @word == userInput
-         @counter = @word.length
-         #result(@counter, @missed_counter)
-       else
-         @missed_counter += 1
-         @previous_choice.push(userInput)
-       end
-    else
-      temp = @word.split("")
-      found_count = temp.each_index.select{|i| temp[i].casecmp(userInput) == 0}
-      if found_count.length > 0
-        @counter += found_count.length
-        found_count.each do |index|
-          word_placeholder[index]= userInput
+
+      if @previous_choice.index(@userInput).nil? && !(@userInput.match(/^[[:alpha:]]+$/).nil?)
+
+        @previous_choice.push(@userInput)
+
+        if @userInput.length > 1
+          if @word == @userInput
+            @counter = @word.length
+            #result(@counter, @missed_counter)
+          else
+            @missed_counter += 1
+            @previous_choice.push(@userInput)
+          end
+        else
+          temp = @word.split("")
+          found_count = temp.each_index.select{|i| temp[i].casecmp(@userInput) == 0}
+          if found_count.length > 0
+            @counter += found_count.length
+            found_count.each do |index|
+              word_placeholder[index]= @userInput
+            end
+          else
+            @missed_counter += 1
+          end
         end
       else
-        @missed_counter += 1
+        puts "You already entered that before"
       end
-
-    end
-#    result
   end
 
   def result
@@ -47,15 +52,12 @@ class Hangman
   end
 
   def game_start
-#    @userInput = gets.chomp
-    if (@previous_choice.index(@userInput).nil?)
-      @previous_choice.push(@userInput)
-    else
-      puts "You already entered that before"
+
+    @userInput = gets.chomp
+
+    while @counter < @word.length && @missed_counter < 6 do
+
     end
-    #while @counter <
-    #
-    #end
 
   end
 

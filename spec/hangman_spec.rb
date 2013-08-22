@@ -6,7 +6,6 @@ describe Hangman   do
 
 
   context "#play" do
-
     it "should accept only alphabet" do
       hangman.userInput = 'aa'
       expect(hangman.userInput.match(/^[[:alpha:]]+$/).nil? ).to eq(false)
@@ -45,17 +44,15 @@ describe Hangman   do
       hangman.word_placeholder.index('l').should_not == nil
     end
 
+    it 'user input should have entry in previous_choice' do
+      hangman.userInput = 'kk'
+      hangman.play
+      hangman.previous_choice.index('kk').should_not == nil
+    end
   end
 
 
   context "#game_start" do
-
-    it 'user input should have entry in previous_choice' do
-      hangman.userInput = 'k'
-      hangman.game_start
-      hangman.previous_choice.index('k').should_not == nil
-    end
-
 
 
   end
