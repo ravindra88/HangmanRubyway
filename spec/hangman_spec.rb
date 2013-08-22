@@ -2,7 +2,25 @@ require './hangman'
 describe Hangman   do
   subject(:hangman){ Hangman.new("elephantisis")}
 
-  it "should accept only 1 character"
+  # complete
+
+
+  context "#play" do
+
+    it "should accept only alphabet" do
+      hangman.userInput = 'aa'
+      expect(hangman.userInput.match(/^[[:alpha:]]+$/).nil? ).to eq(false)
+    end
+
+    it "for correct choice" do
+      hangman.userInput = 'a'
+      hangman.play
+      hangman.counter.should_not == 0
+    end
+
+  end
+
+  
   it "should accept alphabet"
 
   context "#initialize" do
@@ -29,11 +47,19 @@ describe Hangman   do
     end
   end
 
+
+
   context "for correct choice" do
+    it "counter should be increment" do
+      expect(hangman.wrong_choice.length).to eql(0)
+    end
 
   end
 
   context "for wrong choice" do
+     it "missed_counter should be increment" do
+       expect(hangman.wrong_choice.length).to eql(0)
+     end
 
   end
 
@@ -43,9 +69,15 @@ describe Hangman   do
 
   context "result" do
       context "win" do
+        it "counter should be equal word length" do
+          expect(hangman.counter).to eq(12)
+        end
 
       end
       context "loss" do
+        it "missed_counter should be equal 6" do
+          expect( hangman.missed_counter).to eq(6)
+        end
 
       end
   end
