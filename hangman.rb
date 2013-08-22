@@ -47,7 +47,12 @@ class Hangman
   end
 
   def game_start
-
+#    @userInput = gets.chomp
+    if (@previous_choice.index(@userInput).nil?)
+      @previous_choice.push(@userInput)
+    else
+      puts "You already entered that before"
+    end
     #while @counter <
     #
     #end

@@ -42,8 +42,21 @@ describe Hangman   do
     it 'correct input alphabet should exist in word_placeholder' do
       hangman.userInput = 'l'
       hangman.play
-      hangman.word_placeholder.index('l').should > 0
+      hangman.word_placeholder.index('l').should_not == nil
     end
+
+  end
+
+
+  context "#game_start" do
+
+    it 'user input should have entry in previous_choice' do
+      hangman.userInput = 'k'
+      hangman.game_start
+      hangman.previous_choice.index('k').should_not == nil
+    end
+
+
 
   end
 
@@ -73,25 +86,6 @@ describe Hangman   do
   end
 
 
-
-  context "for correct choice" do
-    it "counter should be increment" do
-      expect(hangman.previous_choice.length).to eql(0)
-    end
-
-  end
-
-  context "for wrong choice" do
-     it "missed_counter should be increment" do
-       expect(hangman.previous_choice.length).to eql(0)
-     end
-
-  end
-
-  context "for repeated character" do
-
-  end
-
   context "result" do
       context "win" do
         it "counter should be equal word length" do
@@ -103,7 +97,6 @@ describe Hangman   do
         it "missed_counter should be equal 6" do
           #expect( hangman.missed_counter).to eq(6)
         end
-
       end
   end
 end
