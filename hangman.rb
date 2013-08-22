@@ -2,6 +2,7 @@ class Hangman
 	
 	attr_reader :counter, :word_placeholder, :previous_choice, :missed_counter#, :game_word
   attr_accessor :userInput
+
 	def initialize(word)
     @word = word
 		@counter = 0
@@ -36,27 +37,39 @@ class Hangman
           end
         end
       else
-        puts "You already entered that before"
+        puts "You already entered that before or not a Alphabet"
       end
   end
 
   def result
       if @counter == @word.length
-        puts "Win"
+        puts "You Win"
+        puts "Game Word ::- " + @word
+
       end
       if @missed_counter == 6
-        puts "Loss"
+        puts "You Loss"
+        puts "Game Word ::- " + @word
       end
   end
 
   def game_start
 
-    #@userInput = gets.chomp
-
     while @counter < @word.length && @missed_counter < 6 do
-    puts "Enter"
+      print "Game Word :: - "
+      @word_placeholder.each do |u|
+        print u + " "
+      end
+      puts " "
+      print "wrong choice :: " + @missed_counter.to_s
+      puts " "
+      print "Enter character ::--"
+      @userInput = (gets.chomp).downcase
+      play
+      result
     end
-
   end
 
 end
+
+Hangman.new('kareena').game_start
