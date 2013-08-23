@@ -63,6 +63,11 @@ class Hangman
       puts " "
       print "wrong choice :: " + @missed_counter.to_s
       puts " "
+      print "Previous Entered Choice ::-- "
+      @previous_choice.each do |r|
+        print r + " "
+      end
+      puts " "
       print "Enter character ::--"
       @userInput = (gets.chomp).downcase
       play
@@ -72,4 +77,4 @@ class Hangman
 
 end
 
-Hangman.new('kareena').game_start
+Hangman.new('Support'.downcase).game_start
