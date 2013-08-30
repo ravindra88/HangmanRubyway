@@ -12,7 +12,7 @@ class Hangman
 	end
 
   def play
-
+     #@####
       if @previous_choice.index(@userInput).nil? && !(@userInput.match(/^[[:alpha:]]+$/).nil?)
         @previous_choice.push(@userInput)
 
